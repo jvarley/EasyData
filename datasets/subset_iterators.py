@@ -8,18 +8,17 @@ class SubsetIteratorInterface():
         self.batch_size = batch_size
         self.num_examples = num_examples
 
-        self.current_batch = 0
-        self.batch_indices = []
+        self.current_batch_index = 0
 
     def get_batch_indices(self):
-        self._increment_current_batch()
+        self._increment_current_batch_index()
         return self._next_batch_indices()
 
-    def _increment_current_batch(self):
-        if self.current_batch == self.batch_size:
+    def _increment_current_batch_index(self):
+        if self.current_batch_index == self.batch_size:
             raise StopIteration
         else:
-            self.current_batch += 1
+            self.current_batch_index += 1
 
     #this is implemented by the subclasses
     def _next_batch_indices(self):
