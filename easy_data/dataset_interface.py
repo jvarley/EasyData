@@ -1,8 +1,9 @@
 
-#import collections.Iterator
+import collections
 import numpy as np
 from subset_iterators import *
 import sys
+
 
 #this is the interface that all datasets should fulfill
 class DatasetInterface():
@@ -23,17 +24,17 @@ class DatasetInterface():
             return DatasetIterator(self,
                                    batch_size=batch_size,
                                    num_batches=num_batches,
-                                   subset_iterator=subset_iterator)
+                                   subset_iterator_class_name=subset_iterator)
 
 
-class DatasetIterator():
+class DatasetIterator(collections.Iterator):
 
-    def __init__(self, dataset, batch_size, num_batches, subset_iterator="RandomSubsetIterator"):
+    def __init__(self, dataset, batch_size, num_batches, subset_iterator_class_name="RandomSubsetIterator"):
         self.dataset = dataset
         self.batch_size = batch_size
         self.num_batches = num_batches
 
-        subset_iterator_class = getattr(sys.modules['easy_data.subset_iterators'], subset_iterator)
+        subset_iterator_class = getattr(sys.modules['easy_data.subset_iterators'], subset_iterator_class_name)
         self.subset_iterator = subset_iterator_class(batch_size, self.dataset.get_num_examples())
 
     def next(self):

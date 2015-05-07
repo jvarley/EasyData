@@ -28,7 +28,7 @@ class TestDataset(unittest.TestCase):
 
         iterator = self.dataset.iterator(batch_size=batch_size,
                                          num_batches=num_batches,
-                                         subset_iterator="RandomSubsetIterator")
+                                         subset_iterator_class_name="RandomSubsetIterator")
 
         batch_x, batch_y = iterator.next()
 
