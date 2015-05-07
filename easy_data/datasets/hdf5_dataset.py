@@ -1,4 +1,4 @@
-from datasets.dataset_interface import DatasetInterface
+from easy_data.dataset_interface import DatasetInterface
 import h5py
 
 

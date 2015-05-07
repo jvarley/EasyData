@@ -4,7 +4,7 @@ import os
 import tempfile
 import h5py
 
-from datasets.datasets.hdf5_dataset import HDF5Dataset
+from easy_data.datasets.hdf5_dataset import HDF5Dataset
 
 
 class TestDataset(unittest.TestCase):

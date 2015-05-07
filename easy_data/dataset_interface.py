@@ -33,7 +33,7 @@ class DatasetIterator():
         self.batch_size = batch_size
         self.num_batches = num_batches
 
-        subset_iterator_class = getattr(sys.modules['datasets.subset_iterators'], subset_iterator)
+        subset_iterator_class = getattr(sys.modules['easy_data.subset_iterators'], subset_iterator)
         self.subset_iterator = subset_iterator_class(batch_size, self.dataset.get_num_examples())
 
     def next(self):
