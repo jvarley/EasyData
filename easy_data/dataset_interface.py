@@ -19,12 +19,12 @@ class DatasetInterface():
     def iterator(self,
                  batch_size,
                  num_batches,
-                 subset_iterator="RandomSubsetIterator"):
+                 subset_iterator_class_name="RandomSubsetIterator"):
 
             return DatasetIterator(self,
                                    batch_size=batch_size,
                                    num_batches=num_batches,
-                                   subset_iterator_class_name=subset_iterator)
+                                   subset_iterator_class_name=subset_iterator_class_name)
 
 
 class DatasetIterator(collections.Iterator):
